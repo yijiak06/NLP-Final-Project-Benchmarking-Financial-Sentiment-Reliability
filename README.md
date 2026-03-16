@@ -1,39 +1,45 @@
-# NLP-Final-Project-Benchmarking-Financial-Sentiment-Reliability
+# Financial Sentiment Analysis & Logic Failure Detection: From Baselines to LLMs
+
 ## Project Overview
-This project focuses on evaluating the effectiveness of NLP models in the financial domain. We specifically compare **FinBERT** (a domain-specific Transformer model) and **VADER** (a rule-based lexicon tool) to identify where they fail to capture the complex logic of stock market sentiment, particularly within the **TSLA (Tesla)** ecosystem and **Reddit WallStreetBets (WSB)**.
+This project investigates the effectiveness of various NLP models in the financial domain. We evaluate models ranging from traditional lexicon-based tools to state-of-the-art Large Language Models (LLMs) to identify "Logic Failures"—scenarios where models fail to grasp complex financial context or retail investor slang.
 
-## Team Members
-- **Yijia Kang**
-- **Manasvi Vardham**
+## Team Members (Group 16)
+- **Yijia (Claire) Kang**
 - **Akansha Rawat**
-
+- **Manasvi Vardham**
 
 ## Repository Structure
-- `analysis_code/`: Contains Python scripts for data processing and model inference.
-- `dataset/`: Contains the raw CSV data (WSB and Stock Tweets).
-- `files_generated/`: Contains the output of our analysis, focusing on **Logic Failures** (where models predicted sentiment incorrectly based on financial context).
-- `REPRODUCE.md`: Step-by-step instructions to run the code.
+- `analysis_code/`:
+    - `data_tsla.py`: Sentiment analysis focused on TSLA (Tesla) stock tweets.
+    - `data_secondary_benchmark.py`: Baseline evaluation using VADER and FinBERT.
+    - `LLM_Benchmark.ipynb`: Comprehensive benchmarking of Gemini, Llama, and Mixtral.
+- `dataset/`:
+    - `WSB_full.csv`: Reddit WallStreetBets discussion data (Primary dataset for LLM Benchmarking).
+    - `stock_tweets.csv`: General financial twitter data.
+- `files_generated/`: Contains output CSVs of logic failures and performance visualizations.
+- `REPRODUCE.md`: Step-by-step instructions for environment setup and execution.
 
-## Key Models
-1. **FinBERT**: A pre-trained NLP model fine-tuned on financial corpora (Financial PhraseBank).
-2. **VADER**: A sentiment analysis tool specifically tuned to social media microblogging.
+## Methodology & Model Scope
 
-## Results & Analysis
+### 1. Traditional Baselines (VADER & FinBERT)
+We utilized VADER (rule-based) and FinBERT (domain-specific Transformer) across both datasets to establish a baseline. We focused on identifying **Logic Failures**, such as the misinterpretation of "Shorting" or "Buying the dip."
 
-### 1. The "Logic Failure" Concept
-We defined a "Logic Failure" as a scenario where a model fails to understand financial terminology. For example:
-- **"Shorting the stock"**: Often misinterpreted as a negative physical description rather than a bearish financial position.
-- **"Buying the dip"**: Misinterpreted as negative due to the word "dip," despite being a bullish action.
+### 2. LLM Benchmarking (WSB Dataset Exclusive)
+To push the boundaries of our analysis, we benchmarked advanced LLMs specifically on the **WSB_full.csv** dataset to test their ability to decode high-noise, sarcastic retail investor sentiment.
+- **Models**: Gemini 1.5 Pro, Llama 3.1 70B, and Mixtral 8x7B.
+- **Prompting Strategies**: Zero-shot, Few-shot, and Chain-of-Thought (CoT).
 
-### 2. Comparative Findings
-- **FinBERT** significantly outperformed VADER in professional contexts but still struggled with the high-noise, sarcastic nature of Reddit's WallStreetBets.
-- **TSLA Specifics**: Given Tesla's high volatility, we found that models often failed to capture "diamond hands" (holding through volatility) or "squeezing shorts," leading to the failures logged in `tsla_true_logic_failures.csv`.
+## Key Results & Findings
 
-### 3. Conclusion
-Our analysis suggests that while domain-specific models like FinBERT are superior to general-purpose tools, a robust financial sentiment engine requires a "logic layer" to account for retail investor slang and complex trading strategies.
+- **Baseline Comparison**: On the WSB dataset, the VADER baseline achieved ~44.18% accuracy, while FinBERT achieved ~32.95%, highlighting the difficulty of social media financial text.
+- **LLM Superiority**: LLMs showed significantly better performance in handling sarcasm and slang (e.g., "diamond hands").
+- **The "Logic Gap"**: Despite LLM improvements, logic failures persist when a financial action contradicts standard linguistic sentiment. For instance, "TSLA to the moon" requires understanding ticker-specific hype that general models may still miss.
 
-## Setup & Reproduction
-Please refer to [REPRODUCE.md](REPRODUCE.md) for environment setup and execution instructions.
+## Performance Visualization
+The project generates a **Macro F1 Heatmap** (saved in `files_generated/`) comparing different model-prompt combinations, providing a clear visual representation of which strategy works best for financial social media.
+
+## How to Run
+Please refer to the [REPRODUCE.md](REPRODUCE.md) file for detailed instructions on setting up the Python environment and running the analysis pipeline.
 
 ## Project Structure
 ├── analysis_code/
@@ -48,5 +54,6 @@ Please refer to [REPRODUCE.md](REPRODUCE.md) for environment setup and execution
 │   ├── tsla_true_logic_failures.csv
 │   ├── gpt result.csv
 │   └── Gemini_v1_wsb_predictions.csv
-├── README.md                    
-└── REPRODUCE.md                  
+├── README.md     
+├── REPRODUCE.md  
+└── requirments.txt             
