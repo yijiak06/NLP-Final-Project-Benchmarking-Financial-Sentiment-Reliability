@@ -5,8 +5,8 @@ This project investigates the effectiveness of various NLP models in the financi
 
 ## Team Members (12)
 - **Yijia Kang**
-- **Akansha Rawat**
 - **Manasvi Vardham**
+- **Akansha Rawat**
 
 ## Repository Structure
 - `analysis_code/`:
@@ -42,18 +42,22 @@ The project generates a **Macro F1 Heatmap** (saved in `files_generated/`) compa
 Please refer to the [REPRODUCE.md](REPRODUCE.md) file for detailed instructions on setting up the Python environment and running the analysis pipeline.
 
 ## Project Structure
+
+```text
 ├── analysis_code/
-│   ├── data_tsla.py
-│   ├── data_secondary_benchmark.py
-│   └── LLM_Benchmark.ipynb     
+│   ├── data_tsla.py                 # Sentiment analysis for Tesla stock tweets
+│   ├── data_secondary_benchmark.py  # Baseline evaluation for VADER and FinBERT
+│   └── LLM_Benchmark.ipynb          # Benchmarking for Gemini, Llama, and Mixtral
 ├── dataset/
-│   └── WSB_full.csv              
+│   └── WSB_full.csv                 # Primary dataset for LLM and Baseline analysis
 ├── files_generated/
-│   ├── vader_logic_failures.csv     
-│   ├── finbert_logic_failures.csv
-│   ├── tsla_true_logic_failures.csv
-│   ├── gpt result.csv
-│   └── Gemini_v1_wsb_predictions.csv
-├── README.md     
-├── REPRODUCE.md  
-└── requirments.txt             
+│   ├── vader_logic_failures.csv     # VADER model logic mismatch results
+│   ├── finbert_logic_failures.csv   # FinBERT model logic mismatch results
+│   ├── tsla_true_logic_failures.csv # Tesla-specific sentiment logic failures
+│   ├── gpt result.csv               # LLM output results
+│   └── Gemini_v1_wsb_predictions.csv # Gemini-specific predictions on WSB dataset
+├── README.md                        # Project overview and findings
+├── REPRODUCE.md                     # Step-by-step reproduction guide
+└── requirements.txt                 # Environment dependencies
+
+```
