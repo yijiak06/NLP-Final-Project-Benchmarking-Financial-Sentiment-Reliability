@@ -3,8 +3,8 @@
 ## Project Overview
 This project investigates the effectiveness of various NLP models in the financial domain. We evaluate models ranging from traditional lexicon-based tools to state-of-the-art Large Language Models (LLMs) to identify "Logic Failures"—scenarios where models fail to grasp complex financial context or retail investor slang.
 
-## Team Members (Group 16)
-- **Yijia (Claire) Kang**
+## Team Members (12)
+- **Yijia Kang**
 - **Akansha Rawat**
 - **Manasvi Vardham**
 
