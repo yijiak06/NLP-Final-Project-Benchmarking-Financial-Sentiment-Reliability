@@ -7,3 +7,6 @@ scikit-learn
 tqdm
 matplotlib
 seaborn
+google-generativeai
+groq
+huggingface_hub
