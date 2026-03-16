@@ -34,3 +34,19 @@ Our analysis suggests that while domain-specific models like FinBERT are superio
 
 ## Setup & Reproduction
 Please refer to [REPRODUCE.md](REPRODUCE.md) for environment setup and execution instructions.
+
+## Project Structure
+├── analysis_code/
+│   ├── data_tsla.py
+│   ├── data_secondary_benchmark.py
+│   └── LLM_Benchmark.ipynb     
+├── dataset/
+│   └── WSB_full.csv              
+├── files_generated/
+│   ├── vader_logic_failures.csv     
+│   ├── finbert_logic_failures.csv
+│   ├── tsla_true_logic_failures.csv
+│   ├── gpt result.csv
+│   └── Gemini_v1_wsb_predictions.csv
+├── README.md                    
+└── REPRODUCE.md                  
